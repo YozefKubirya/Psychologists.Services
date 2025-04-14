@@ -1,20 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile,signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from '../../firebase/firebase.js';
 
-// 🔐 Register user
+
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async ({ name, email, password }, thunkAPI) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
-      // Додаємо ім’я до профілю користувача
+
       await updateProfile(userCredential.user, {
         displayName: name,
       });
 
-      // Можна повернути всю потрібну інфу
+
       return {
         uid: userCredential.user.uid,
         email: userCredential.user.email,
@@ -27,3 +27,25 @@ export const registerUser = createAsyncThunk(
 );
 
 
+export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, password},thunkAPI)=>{
+   try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      
+      return {
+        uid: userCredential.user.uid,
+        email: userCredential.user.email,
+        name: userCredential.user.displayName,
+      };
+   } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+   }
+});
+
+export const logOutUser = createAsyncThunk('auth/logOutUser', async(_,thunkAPI)=>{
+   try {    
+      return signOut();   
+   } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+   }
+
+})
