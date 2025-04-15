@@ -49,3 +49,19 @@ export const logOutUser = createAsyncThunk('auth/logOutUser', async(_,thunkAPI)=
    }
 
 })
+
+
+export const refreshUser = createAsyncThunk('auth/refreshUser', async(_,thunkAPI) => {
+  try {
+      const user = auth.currentUser;
+      if (user) {
+        return {
+          uid: user.uid,
+          email: user.email,
+          name: user.displayName,}
+        }else {
+          return thunkAPI.rejectWithValue("No authenticated user");}
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+})
