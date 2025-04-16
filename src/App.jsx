@@ -25,10 +25,6 @@ function App() {
     </Suspense>
     </Layout>
     
-      
-      {/* <SignUpForm/>
-      <SignInForm/>
-      <LogOut/> */}
     </>
   )
 }

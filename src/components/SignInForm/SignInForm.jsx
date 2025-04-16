@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import { loginUser } from "../../redux/auth/operations.js";
+
 import { useDispatch } from "react-redux";
 export const SignInForm = () => {
    const dispatch = useDispatch();
@@ -9,6 +10,7 @@ export const SignInForm = () => {
          action.resetForm();
       }
    return(<>
+  
    <Formik initialValues={
    {
    email:'',
@@ -21,5 +23,7 @@ export const SignInForm = () => {
    <button type="submit">Submit</button>
    </Form>
 </Formik>
+
+   
    </>)
 }
