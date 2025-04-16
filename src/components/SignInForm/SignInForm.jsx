@@ -2,12 +2,13 @@ import { Formik, Form, Field } from "formik";
 import { loginUser } from "../../redux/auth/operations.js";
 
 import { useDispatch } from "react-redux";
-export const SignInForm = () => {
+export const SignInForm = ({closeModal}) => {
    const dispatch = useDispatch();
    const handleSubmit = (values,action)=>{
          console.log(values);
          dispatch(loginUser(values))
          action.resetForm();
+         closeModal();
       }
    return(<>
   

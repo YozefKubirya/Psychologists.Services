@@ -26,14 +26,15 @@ export default function AuthNav (){
    return<>
    <div>
       <div>
+        
         <button onClick={() => openModal("SignUp")}>Registration</button>
         <button onClick={() => openModal("SignIn")}>Log In</button>
       </div>
 
       
       <ModalWraper isOpen={isModalOpen} handleClose={closeModal}>
-        {formType === "SignUp" && <SignUpForm />}
-        {formType === "SignIn" && <SignInForm />}
+        {formType === "SignUp" && <SignUpForm closeModal = {closeModal}/>}
+        {formType === "SignIn" && <SignInForm closeModal = {closeModal}/>}
       </ModalWraper>
    </div>
    </>

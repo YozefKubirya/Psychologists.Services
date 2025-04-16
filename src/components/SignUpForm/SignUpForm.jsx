@@ -3,7 +3,7 @@ import { registerUser } from "../../redux/auth/operations.js";
 import { useDispatch } from "react-redux";
 
 
-export const SignUpForm = () => {
+export const SignUpForm = ({closeModal}) => {
    const dispatch = useDispatch();
    
    
@@ -12,6 +12,7 @@ export const SignUpForm = () => {
       console.log(values);
       dispatch(registerUser(values))
       action.resetForm();
+      closeModal();
    }
    return(<>
 

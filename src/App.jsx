@@ -1,8 +1,6 @@
 
 import './App.css'
-import { SignUpForm } from './components/SignUpForm/SignUpForm'
-import { SignInForm } from './components/SignInForm/SignInForm'
-import { LogOut } from './components/LogOut/LogOut'
+import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout/Layout';

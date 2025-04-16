@@ -8,14 +8,21 @@ export const registerUser = createAsyncThunk(
   async ({ name, email, password }, thunkAPI) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
 
-      await updateProfile(userCredential.user, {
+      await updateProfile(user, {
         displayName: name,
       });
 
+      const userExists = userCredential.user.email;
+      if (!userExists) {
+        throw new Error("User already exists");
+      }
+      
 
-      return {
+
+      return  {
         uid: userCredential.user.uid,
         email: userCredential.user.email,
         name: userCredential.user.displayName,
@@ -31,7 +38,7 @@ export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, pass
    try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       
-      return {
+      return  {
         uid: userCredential.user.uid,
         email: userCredential.user.email,
         name: userCredential.user.displayName,
@@ -43,7 +50,7 @@ export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, pass
 
 export const logOutUser = createAsyncThunk('auth/logOutUser', async(_,thunkAPI)=>{
    try {    
-      return await signOut(auth);   
+    await signOut(auth);   
    } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
    }
@@ -55,7 +62,7 @@ export const refreshUser = createAsyncThunk('auth/refreshUser', async(_, thunkAP
   try {
     const user = auth.currentUser;
     if (user) {
-      return {
+      return  {
         uid: user.uid,
         email: user.email,
         name: user.displayName,
