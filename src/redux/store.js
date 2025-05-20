@@ -8,14 +8,16 @@ import { persistStore, persistReducer, FLUSH,
 import storage from 'redux-persist/lib/storage' 
 
 import authReducer from './auth/slice.js'
+import psycologistsReducer from './psycologists/slice.js'
 const persistedAuthReducer=persistReducer({
    key:"auth",
    storage,
  },authReducer)
- 
+
  export const store= configureStore({
     reducer:{
-       auth:persistedAuthReducer,      
+       auth:persistedAuthReducer,
+       psycologists:psycologistsReducer,      
     },
     middleware: (getDefaultMiddleware) =>
        getDefaultMiddleware({
