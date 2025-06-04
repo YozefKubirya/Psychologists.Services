@@ -22,6 +22,7 @@ export const SignInForm = ({closeModal}) => {
       <Field type='email' name="email"/>
       <Field type='password' name="password"/>
    <button type="submit">Submit</button>
+   <button type="button" onClick={closeModal}>X</button>
    </Form>
 </Formik>
 

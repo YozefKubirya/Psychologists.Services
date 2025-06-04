@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { fetchPsycologists } from "../../redux/psycologists/operations";
 import { selectPsycologists } from "../../redux/psycologists/selectors";
 import { useSelector } from "react-redux";
+import PsychologistsList from "../../components/PsychologistsList/PsychologistsList";
 const PsychologistsPage = () => {
    const dispatch = useDispatch();
    const psycologists = useSelector(selectPsycologists);
@@ -13,9 +14,7 @@ const PsychologistsPage = () => {
    
    return(<>
    <h2>Psychologist Page</h2>
-   <ul>
-     
-   </ul>
+  <PsychologistsList psycologists={psycologists} />
    </>)
 }
 export default PsychologistsPage;

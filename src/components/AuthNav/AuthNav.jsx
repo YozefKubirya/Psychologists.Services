@@ -19,10 +19,10 @@ export default function AuthNav (){
     setIsModalOpen(false);
     setFormType(null); 
   };
-
-  if (isLoggedIn) {
-   closeModal();
-  };
+   if (isLoggedIn) {
+      closeModal();
+    }
+ 
    return<>
    <div>
       <div>
