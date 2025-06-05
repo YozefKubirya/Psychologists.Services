@@ -1,7 +1,8 @@
 import { Formik, Form, Field } from "formik";
 import { loginUser } from "../../redux/auth/operations.js";
-
+import { IoMdClose } from "react-icons/io";
 import { useDispatch } from "react-redux";
+import css from './SignInForm.module.css'
 export const SignInForm = ({closeModal}) => {
    const dispatch = useDispatch();
    const handleSubmit = (values,action)=>{
@@ -18,11 +19,13 @@ export const SignInForm = ({closeModal}) => {
    password:''
    }   
 } onSubmit={handleSubmit}>
-   <Form>
-      <Field type='email' name="email"/>
-      <Field type='password' name="password"/>
-   <button type="submit">Submit</button>
-   <button type="button" onClick={closeModal}>X</button>
+   <Form className={css.form}>
+      <h2 className={css.title}>Log In</h2>
+      <p className={css.text}>Welcome back! Please enter your credentials <br />to access your account and continue your search for a psychologist.</p>
+      <Field type='email' name="email" className={css.formInput}/>
+      <Field type='password' name="password" className={css.formInput}/>
+   <button type="submit" className={css.logInButton}>Log In</button>
+   <button type="button" onClick={closeModal} className={css.closeButton}><IoMdClose className={css.icon}/></button>
    </Form>
 </Formik>
 
