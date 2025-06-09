@@ -22,8 +22,8 @@ export const SignInForm = ({closeModal}) => {
    <Form className={css.form}>
       <h2 className={css.title}>Log In</h2>
       <p className={css.text}>Welcome back! Please enter your credentials <br />to access your account and continue your search for a psychologist.</p>
-      <Field type='email' name="email" className={css.formInput}/>
-      <Field type='password' name="password" className={css.formInput}/>
+      <Field type='email' name="email" className={css.formInput} placeholder='Email'/>
+      <Field type='password' name="password" className={css.formInput} placeholder='Password'/>
    <button type="submit" className={css.logInButton}>Log In</button>
    <button type="button" onClick={closeModal} className={css.closeButton}><IoMdClose className={css.icon}/></button>
    </Form>

@@ -57,7 +57,7 @@ outline: none;
    font-size: 16px;
 
 }
-.logInButton{
+.signUpButton{
    width: 100%;
    height: 56px;
    background: #3470FF;
@@ -71,6 +71,6 @@ outline: none;
    margin-top: 40px;
    transition: 500ms;
 }
-.logInButton:hover{
+.signUpButton:hover{
    background-color: #255EE8;
 }
