@@ -1,6 +1,12 @@
 import { useState } from "react";
-export default function PsychologistItem ({name,price,rating,experience,license,specialization,initial_consultation,about,reviews}) {
+import { toggleFavorites } from "../../redux/favorites/slice";
+import { useDispatch } from "react-redux";
+export default function PsychologistItem ({id,name,price,rating,experience,license,specialization,initial_consultation,about,reviews}) {
    const [showReviews, setShowReviews] = useState(false);
+   const dispatch = useDispatch();
+   const handleToggleFavorites = () => {
+      dispatch(toggleFavorites(id));
+   };
    const toggleReviews = ()=>{
       setShowReviews(!showReviews)
    }
@@ -14,6 +20,7 @@ export default function PsychologistItem ({name,price,rating,experience,license,
    <p>specialization:{specialization}</p>
    <p>initial_consultation:{initial_consultation}</p>
    <p>about:{about}</p>
+    <button onClick={handleToggleFavorites}>Add to favorites</button>
 <button onClick={toggleReviews}>
     {showReviews ? 'Hide reviews' : 'Show reviews'}
   </button>
@@ -28,6 +35,7 @@ export default function PsychologistItem ({name,price,rating,experience,license,
          </li>
       
    })}</ul>
+  
    <button>Make appointment</button>
       </div>}
    

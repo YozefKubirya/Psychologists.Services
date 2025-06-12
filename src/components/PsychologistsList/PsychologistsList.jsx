@@ -13,7 +13,9 @@ export default function PsychologistsList({ psycologists }) {
 
    <ul>
       {sortedPsychologists.map((psy)=>{
-         return <li key={psy.id}><PsychologistItem name={psy.name} price={psy.price_per_hour} rating={psy.rating} experience={psy.experience} license={psy.license} specialization={psy.specialization} initial_consultation={psy.initial_consultation} about={psy.about} reviews={psy.reviews}/></li>
+         return <li key={psy.id}>
+            <PsychologistItem id={psy.id} name={psy.name} price={psy.price_per_hour} rating={psy.rating} experience={psy.experience} license={psy.license} specialization={psy.specialization} initial_consultation={psy.initial_consultation} about={psy.about} reviews={psy.reviews}/>
+            </li>
       })}
    </ul>
    </>)
